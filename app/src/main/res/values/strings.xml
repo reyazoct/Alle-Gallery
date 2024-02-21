@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Alle Gallery</string>
+    <string name="no_images_selected">No screenshots is selected at this\nmoment. Please pick screenshots</string>
+    <string name="pick">Pick</string>
+</resources>
