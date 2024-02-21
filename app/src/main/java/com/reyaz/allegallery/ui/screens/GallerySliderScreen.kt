@@ -42,6 +42,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.reyaz.allegallery.ImagesViewModel
+import com.reyaz.allegallery.util.getImageLoader
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -134,7 +135,10 @@ private fun BoxScope.AlleScroller(
                     .clickable(currentlySelectedPosition != index) {
                         onSelect(index)
                     },
-                painter = rememberAsyncImagePainter(model = currentUri),
+                painter = rememberAsyncImagePainter(
+                    model = currentUri,
+                    imageLoader = getImageLoader(LocalContext.current)
+                ),
                 contentDescription = null,
                 alignment = Alignment.Center,
                 contentScale = ContentScale.FillWidth,
@@ -155,7 +159,10 @@ private fun AllePager(uriList: List<Uri>, pagerState: PagerState) {
         val currentUri = uriList[index]
         Image(
             modifier = Modifier.fillMaxWidth(),
-            painter = rememberAsyncImagePainter(model = currentUri),
+            painter = rememberAsyncImagePainter(
+                model = currentUri,
+                imageLoader = getImageLoader(LocalContext.current)
+            ),
             contentDescription = null,
             alignment = Alignment.Center,
             contentScale = ContentScale.FillWidth,
